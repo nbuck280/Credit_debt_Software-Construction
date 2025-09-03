@@ -29,8 +29,8 @@ int main()
     cout << left << "**********************************************************\n";
     cout << left << "\tAmortization Table\n";
     cout << left << "**********************************************************\n";
-    cout << left << "Month\tBalance \tPayment\tRate\tInterest\tPrincipal\n";
-
+    printf("%-7s %-9s %-12s %-7s %-10s %-10s\n",
+           "Month", "Balance", "Payment", "Rate", "Interest", "Principal");
     //Beginning of variables to print as the program runs
     float balance = loan;
     float rate = (yearlyRate / 12.00) / 100.0;
@@ -48,7 +48,9 @@ cout.precision(2);
 while (balance > 0){
     if (month ==0){
         //What to do for the first month
-        cout << left << month << "\t$" << balance << " \t" << "N/A" << "\t" << "N/A" << "\t" << "N/A" << "\t" << "N/A" << endl;
+        
+        printf("%-7i $%-8.2f %-12s %-7s %-10s %-10s\n",
+           month, balance, "N/A", "N/A", "N/A", "N/A");
         month++;
     }
     else {
@@ -63,7 +65,8 @@ while (balance > 0){
         }
         principal = monthlyPayment - interest;
         totalInterest = totalInterest + interest;
-        cout << left << month << "\t$" << balance << " \t$" << monthlyPayment << "\t" << (rate*100) << "\t$" << interest << "\t$" << principal << endl;
+        printf("%-7i $%-8.2f $%-12.2f %-7.2f $%-10.2f $%-10.2f\n",
+           month, balance, monthlyPayment, (rate*100), interest, principal);
         month++;
     }
     }
